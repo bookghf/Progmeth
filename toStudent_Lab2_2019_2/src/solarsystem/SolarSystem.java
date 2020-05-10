@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class SolarSystem {
 	
 	// fill code //
+	public static ArrayList<Planet> planets;
 	public static final int X_RANGE = 2;
 	public static final int Y_RANGE = 2;
 	
@@ -66,8 +67,20 @@ public class SolarSystem {
 	}
 	
 	//fill code //
-	
-	
+	public static void addPlanet(Planet planet) {
+		if(!doesPlanetExist(planet)) {
+			planets.add(planet);
+			printMap();
+		}
+	}
+	public static boolean doesPlanetExist(Planet planet) {
+		boolean exist = false;
+		if (planet.orbit()) {
+			System.out.println(planet.getClass().toString().split(" ")[1] + " exists !!!");
+			exist = true;
+		}
+		return exist;
+	}
 	public static void printMap() {
 		for( int i = Y_RANGE*2 ; i >= -Y_RANGE*2 ; i-- ) {
 			for( int j = -X_RANGE ; j <= X_RANGE ; j++ ) {

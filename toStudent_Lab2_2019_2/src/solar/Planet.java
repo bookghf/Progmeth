@@ -6,6 +6,8 @@ public class Planet {
 	protected int orbitRadius;
 	
 	public Planet() {
+		coordinate = new Coordinate();
+		orbitCenterCoordinate = new Coordinate();
 		getCoordinate().setX(1);
 		getCoordinate().setY(0);
 		getOrbitCenterCoordinate().setX(0);
@@ -13,11 +15,13 @@ public class Planet {
 		this.orbitRadius = 1;
 	}
 	public Planet(int orbitRadius) {
-		getCoordinate().setX(1);
+		if(orbitRadius < 1) orbitRadius = 1;
+		coordinate = new Coordinate();
+		orbitCenterCoordinate = new Coordinate();
+		getCoordinate().setX(orbitRadius);
 		getCoordinate().setY(0);
 		getOrbitCenterCoordinate().setX(0);
 		getOrbitCenterCoordinate().setY(0);
-		if(orbitRadius < 1) orbitRadius = 1;
 		this.orbitRadius = orbitRadius;
 	}
 	public Coordinate getCoordinate() {
@@ -32,6 +36,7 @@ public class Planet {
 	}
 	public boolean orbit() {
 		boolean orbit = true;
+		if (orbitRadius > 4) orbit = false;
 		return orbit;
 	}
 	
